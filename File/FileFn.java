@@ -2,6 +2,10 @@ package com.java.File;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -144,7 +148,7 @@ public class FileFn {
 		//				.map(String::valueOf)
 		//				.collect(Collectors.joining(" "));
 		//		System.out.println(joined);
-		
+
 	}
 
 	public String[] findFolder(String folderName) throws IOException {
@@ -596,6 +600,7 @@ public class FileFn {
 	}
 
 	/**
+	 * Java 8
 	 * Recursively deletes all sub-folders and files under specified folder
 	 * @param fileName
 	 * @param folderName
@@ -615,5 +620,107 @@ public class FileFn {
 		}
 	}
 
+	/**
+	 * Java 7
+	 * Java byte streams are used to perform input and output of 8-bit bytes. The most frequently used classes are, FileInputStream and FileOutputStream.
+	 * @param inputFileName
+	 * @param outputFileName
+	 * @throws IOException 
+	 */
+	public void copyFile1(String inputFileName, String outputFileName) throws IOException {
+		FileInputStream in = null;
+		FileOutputStream out = null;
 
+		try {
+			in = new FileInputStream(inputFileName);
+			out = new FileOutputStream(outputFileName);
+
+			int c;
+			while ((c = in.read()) != -1) {
+				out.write(c);
+			}
+		}finally {
+			if (in != null) {
+				in.close();
+			}
+			if (out != null) {
+				out.close();
+			}
+		}
+	}
+
+	/**
+	 * Java 7
+	 * FileReader reads two bytes at a time and FileWriter writes two bytes at a time.
+	 * @param inputFileName
+	 * @param outputFileName
+	 * @throws IOException 
+	 */
+	public void copyFile2(String inputFileName, String outputFileName) throws IOException {
+		FileReader in = null;
+		FileWriter out = null;
+
+		try {
+			in = new FileReader(inputFileName);
+			out = new FileWriter(outputFileName);
+
+			int c;
+			while ((c = in.read()) != -1) {
+				out.write(c);
+			}
+		}finally {
+			if (in != null) {
+				in.close();
+			}
+			if (out != null) {
+				out.close();
+			}
+		}
+	}
+
+	/**
+	 * Java 7
+	 * @param path - /tmp/user/java/bin
+	 * @param folderName MyFolder 
+	 * Complet path to the new folder will be: /tmp/user/java/bin/MyFolder
+	 */
+	public void createFolder(String path, String folderName) {
+		String dirname = path + "/" + folderName;
+		File d = new File(dirname);
+
+		// Create directory now.
+		d.mkdirs();
+	}
+	
+	/**
+	 * 
+	 * @param folderName - "/tmp", "/tmp/test" 
+	 * @return
+	 */
+	public String[] ReadFolder(String folderName) {
+		File file = null;
+	    String[] paths = null;
+	  
+	      try {      
+	         // create new file object
+	         file = new File(folderName);
+
+	         // array of files and directory
+	         paths = file.list();
+
+	         // for each name in the path array
+	         for(String path:paths) {
+	            // prints filename and directory name
+	            System.out.println(path);
+	         }
+	      }catch(Exception e) {
+	         // if any error occurs
+	         e.printStackTrace();
+	      }
+	      
+	      return paths;
+	}
 }
+
+
+
