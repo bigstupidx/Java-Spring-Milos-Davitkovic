@@ -1,4 +1,4 @@
-package com.java.Console;
+package netgloo.com.java.Console;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

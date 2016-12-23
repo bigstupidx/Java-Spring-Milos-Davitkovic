@@ -1,4 +1,4 @@
-package com.java.Generic;
+package netgloo.com.java.Generic;
 
 /**
  *   	  Box<Integer> integerBox = new Box<Integer>();

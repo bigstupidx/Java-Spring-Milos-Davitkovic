@@ -1,4 +1,4 @@
-package com.java.Time;
+package netgloo.com.java.Time;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -8,15 +8,18 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-
 import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.TimeInfo;
 import org.springframework.stereotype.Controller;
 
+/**
+ * 
+ * @author Miloš Davitković
+ *
+ */
 @Controller
 public class NTPClient {
-
-
+	
 
 	public NTPClient() {
 		super();
@@ -25,8 +28,9 @@ public class NTPClient {
 
 	/**
 	 * 
-	 * @param utc If you set utc on true you will have UTC (GMT0) time, if you set utc on false you will have your time zone time
-	 * @return Correct NTP time from pool of servers
+	 * @param 	utc If you set utc on true you will have UTC (GMT0) time, if you set utc on false you will have 
+	 * 			your time zone time
+	 * @return 	Correct NTP time from pool of servers
 	 */
 	public Date getNTPDate(boolean utc) {
 		System.out.println(" ************************************************************** " );
