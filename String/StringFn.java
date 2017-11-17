@@ -5,15 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.Collator;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -807,12 +799,41 @@ System.out.println(countries); // outputs [Slovensko, Švédsko, Turecko]
     }
 	
 	// ##########################################################################################################
-	
-	
-	
+
+	public String[] wordsOfString(String input) {
+		try {
+			if (input == null || input.isEmpty()) {
+                String[] array = new String[0];
+                return array;
+            }
+			String[] words = input.split("\\s+");
+			return words;
+		} catch (Exception e) {
+			e.printStackTrace();
+			String[] array = new String[0];
+			return array;
+		}
+	}
+
+
 	// ##########################################################################################################
-	
-	
+
+	public Integer countWordsOfString(String input) {
+		try {
+			if (input == null || input.isEmpty()) {
+                return 0;
+            }
+			String[] words = input.split("\\s+");
+			return words.length;
+
+//			StringTokenizer tokens = new StringTokenizer(input);
+//			return tokens.countTokens();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
 	
 	// ##########################################################################################################
 	

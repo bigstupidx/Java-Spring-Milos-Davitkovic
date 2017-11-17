@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Predicate;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -15,9 +16,10 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class IntegerFn {
 
+	final private Logger log = Logger.getLogger(this.getClass());
+
 	public IntegerFn() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	
@@ -61,6 +63,54 @@ public class IntegerFn {
 
 		Random r = new Random();
 		return r.nextInt((max - min) + 1) + min;
+	}
+
+	public boolean isFirstGreatherThenSecond(Integer int1, Integer int2) {
+		try {
+			if (int1 != null && int2 != null) {
+				if (int1.compareTo(int2) > 0) {
+					return true;
+				}
+			} else {
+				log.error("One or both integers are null!");
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean isFirstLessThenSecond(Integer int1, Integer int2) {
+		try {
+			if (int1 != null && int2 != null) {
+				if (int1.compareTo(int2) < 0) {
+					return true;
+				}
+			} else {
+				log.error("One or both integers are null!");
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean isIntegersEqual(Integer int1, Integer int2) {
+		try {
+			if (int1 != null && int2 != null) {
+				if (int1.compareTo(int2) == 0) {
+					return true;
+				}
+			} else {
+				log.error("One or both integers are null!");
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
 }
