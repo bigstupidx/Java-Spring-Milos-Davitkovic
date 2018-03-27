@@ -837,6 +837,16 @@ System.out.println(countries); // outputs [Slovensko, Švédsko, Turecko]
 	
 	// ##########################################################################################################
 	
+	/**
+	 * SAP ERP system expect some speficit number and format. If SAP expect the number with 10 digits you need
+	 * to convert Integer with this function, otherwise you will send for example: 10 instead 0000000010;
+	 */
+	private String convertNumberToSpecificLenghtString(final String code) {
+        if (code.matches("\\d+")) {
+            return String.format("%010d", Integer.valueOf(code));
+        }
+        return code;
+    }
 	
 	
 	// ##########################################################################################################

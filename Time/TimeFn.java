@@ -15,7 +15,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -185,6 +184,12 @@ public class TimeFn {
 		Instant systemTime = Instant.now(); 
 		systemTime.plusNanos(NTPdifference);
 		return fromInstantToDate(systemTime);
+	}
+
+	public Date getTomorrow() {
+		final Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.DAY_OF_WEEK, +1);
+ 		calendar.getTime();
 	}
 
 }
